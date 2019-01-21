@@ -1,0 +1,67 @@
+body {
+    background: url('../img/background.jpg') repeat center 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    max-width: 600px;
+}
+
+.tops-welcome {
+    background-color: #1f1f1f;
+    h2 {
+        padding: 15px 0;
+        color: #fff;
+    }
+}
+
+.tops-highlight {
+    padding: 30px 0;
+}
+
+.tops-condition {
+    .title {
+        margin-left: -15px;
+        padding: 5px 15px;
+        display: inline-block;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        color: #C62662;
+        font-size: 20px;
+        font-weight: bold;
+        background: rgba(242,191,38,1);
+        background: -moz-linear-gradient(left, rgba(242,191,38,1) 0%, rgba(229,206,128,1) 25%, rgba(255,242,195,1) 45%, rgba(229,206,128,1) 76%, rgba(186,137,46,1) 100%);
+        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(242,191,38,1)), color-stop(25%, rgba(229,206,128,1)), color-stop(45%, rgba(255,242,195,1)), color-stop(76%, rgba(229,206,128,1)), color-stop(100%, rgba(186,137,46,1)));
+        background: -webkit-linear-gradient(left, rgba(242,191,38,1) 0%, rgba(229,206,128,1) 25%, rgba(255,242,195,1) 45%, rgba(229,206,128,1) 76%, rgba(186,137,46,1) 100%);
+        background: -o-linear-gradient(left, rgba(242,191,38,1) 0%, rgba(229,206,128,1) 25%, rgba(255,242,195,1) 45%, rgba(229,206,128,1) 76%, rgba(186,137,46,1) 100%);
+        background: -ms-linear-gradient(left, rgba(242,191,38,1) 0%, rgba(229,206,128,1) 25%, rgba(255,242,195,1) 45%, rgba(229,206,128,1) 76%, rgba(186,137,46,1) 100%);
+        background: linear-gradient(to right, rgba(242,191,38,1) 0%, rgba(229,206,128,1) 25%, rgba(255,242,195,1) 45%, rgba(229,206,128,1) 76%, rgba(186,137,46,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2bf26', endColorstr='#ba892e', GradientType=1 );
+    }
+    .promo {
+        .item {
+            a {
+                display: block;
+                margin-left: -20px;
+                margin-right: -20px;
+            }
+            img {
+                width: calc(100% + 80px);
+            }
+        }
+    }
+}
+
+.tops-footer {
+    background-color: #1f1f1f;
+    text-align: center;
+    img {
+        margin: 0;
+        padding: 15px 0;
+        color: #fff;
+    }
+}
