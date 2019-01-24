@@ -1,0 +1,55 @@
+<?php
+
+use Slim\Http\Request;
+use Slim\Http\Response;
+
+// Routes
+/*
+$app->get('/[{name}]', function (Request $request, Response $response, array $args) {
+    // Sample log message
+    $this->logger->info("Slim-Skeleton '/' route");
+
+    // Render index view
+    return $this->renderer->render($response, 'index.phtml', $args);
+});
+*/
+
+$app->get('/smsid/{url_id}',function(Request $request, Response $response, array $args){
+	$url_id = $args['url_id'];
+	$stmt  = $this->db->prepare("SELECT * FROM customer WHERE url_id=:url_id");
+	$stmt->execute(['url_id' => $url_id]);
+	$data = $stmt ->fetch();
+	//var_dump($data);
+	//echo $data['id'];
+	//return $response->withJson($data, 201);
+	return $response
+    ->withStatus(200)
+    ->withHeader("Content-Type", "application/json;charset=utf-8")
+    ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
+});
+
+$app->get('/rurl/{cus_id}/{rurl_id}',function(Request $request, Response $response, array $args){
+	$cus_id = $args['cus_id'];
+	$rurl_id = $args['rurl_id'];
+	$stmt  = $this->db->prepare("SELECT rurl_full FROM rurl WHERE rurl_id=:rurl_id");
+	$stmt->execute(['rurl_id' => $rurl_id]);
+	$rurl = $stmt->fetch();
+
+	$stmt  = $this->db->prepare("SELECT id FROM customer WHERE id=:cus_id");
+	$stmt->execute(['cus_id' => $cus_id]);
+	$cus = $stmt->fetch();
+
+	if($rurl === FALSE || $cus === FALSE){
+		return $response
+    		->withStatus(200)
+    		->withHeader("Content-Type", "application/json;charset=utf-8")
+    		->write(json_encode(array('error'=>'not have url or customer id'), JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
+	}else{
+		$stmt  = $this->db->prepare("INSERT INTO customer_click_url (customer_id,rurl_id) VALUES (:cus_id,:rurl_id)");
+		$stmt->execute([
+							'rurl_id' => $rurl_id,
+							'cus_id' => $cus_id
+						]);
+		return $response->withStatus(302)->withHeader('Location', $rurl['rurl_full']);
+	}
+});
