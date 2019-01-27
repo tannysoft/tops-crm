@@ -14,14 +14,16 @@ $app->get('/[{name}]', function (Request $request, Response $response, array $ar
 });
 */
 
-$app->get('/smsid/{url_id}',function(Request $request, Response $response, array $args){
+$app->get('/data/{url_id}',function(Request $request, Response $response, array $args){
 	$url_id = $args['url_id'];
 	$stmt  = $this->db->prepare("SELECT * FROM customer WHERE url_id=:url_id");
 	$stmt->execute(['url_id' => $url_id]);
 	$data = $stmt ->fetch();
-	//var_dump($data);
-	//echo $data['id'];
-	//return $response->withJson($data, 201);
+
+	$stmt = $this->db->prepare("SELECT rurl_id FROM customer_click_url WHERE customer_id = :cus_id");
+	$stmt->execute(['cus_id' => $data['id']]);
+	$data['url'] = $stmt ->fetch();
+	
 	return $response
     ->withStatus(200)
     ->withHeader("Content-Type", "application/json;charset=utf-8")
