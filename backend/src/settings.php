@@ -19,8 +19,8 @@ return [
         'db' => [
             'host' => 'localhost',
             'dbname' => 'top_db',
-            'user' => 'root',
-            'pass' => ''
+            'user' => 'top_user',
+            'pass' => '25iStZTFOd1JQ8us'
         ],
     ],
 
