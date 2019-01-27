@@ -24,6 +24,11 @@ $app->get('/data/{url_id}',function(Request $request, Response $response, array 
 		$stmt = $this->db->prepare("SELECT rurl_id FROM customer_click_url WHERE customer_id = :cus_id");
 		$stmt->execute(['cus_id' => $data['id']]);
 		$data['url'] = $stmt ->fetch();
+	}else{
+		return $response
+		    ->withStatus(200)
+		    ->withHeader("Content-Type", "application/json;charset=utf-8")
+		    ->write(json_encode(array('error'=>'not have data'), JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
 	}
 
 	return $response
@@ -49,11 +54,15 @@ $app->get('/rurl/{cus_id}/{rurl_id}',function(Request $request, Response $respon
     		->withHeader("Content-Type", "application/json;charset=utf-8")
     		->write(json_encode(array('error'=>'not have url or customer id'), JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
 	}else{
-		$stmt  = $this->db->prepare("INSERT INTO customer_click_url (customer_id,rurl_id) VALUES (:cus_id,:rurl_id)");
-		$stmt->execute([
+		try{
+			$stmt  = $this->db->prepare("INSERT INTO customer_click_url (customer_id,rurl_id) VALUES (:cus_id,:rurl_id)");
+			$stmt->execute([
 							'rurl_id' => $rurl_id,
 							'cus_id' => $cus_id
 						]);
+		} catch (Exception $e) {
+
+		}
 		return $response->withStatus(302)->withHeader('Location', $rurl['rurl_full']);
 	}
 });
