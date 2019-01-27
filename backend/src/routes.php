@@ -20,10 +20,12 @@ $app->get('/data/{url_id}',function(Request $request, Response $response, array 
 	$stmt->execute(['url_id' => $url_id]);
 	$data = $stmt ->fetch();
 
-	$stmt = $this->db->prepare("SELECT rurl_id FROM customer_click_url WHERE customer_id = :cus_id");
-	$stmt->execute(['cus_id' => $data['id']]);
-	$data['url'] = $stmt ->fetch();
-	
+	if($data !== false){
+		$stmt = $this->db->prepare("SELECT rurl_id FROM customer_click_url WHERE customer_id = :cus_id");
+		$stmt->execute(['cus_id' => $data['id']]);
+		$data['url'] = $stmt ->fetch();
+	}
+
 	return $response
     ->withStatus(200)
     ->withHeader("Content-Type", "application/json;charset=utf-8")
