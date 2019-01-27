@@ -23,7 +23,10 @@ $app->get('/data/{url_id}',function(Request $request, Response $response, array 
 	if($data !== false){
 		$stmt = $this->db->prepare("SELECT rurl_id FROM customer_click_url WHERE customer_id = :cus_id");
 		$stmt->execute(['cus_id' => $data['id']]);
-		$data['url'] = $stmt ->fetch();
+		$url_click = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		foreach ($url_click as $key => $value) {
+			$data['url'][] = $value['rurl_id'];
+		}
 	}else{
 		return $response
 		    ->withStatus(200)
@@ -35,6 +38,7 @@ $app->get('/data/{url_id}',function(Request $request, Response $response, array 
     ->withStatus(200)
     ->withHeader("Content-Type", "application/json;charset=utf-8")
     ->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
+    
 });
 
 $app->get('/rurl/{cus_id}/{rurl_id}',function(Request $request, Response $response, array $args){
