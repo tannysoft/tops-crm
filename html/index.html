@@ -187,8 +187,6 @@
             creditsCard.push({"bay": creditsRedirect});
           }
 
-          //console.log(creditsCard);
-
           reloadCarousel(creditsCard, resp.id);
 
         } else {
@@ -206,29 +204,14 @@
       elementPromo.classList.remove("d-none");
 
       function reloadCarousel(creditsCard, sid) {
-        //let content;
-
-        //carousel.trigger('destroy.owl.carousel'); 
-        //carousel.find('.owl-stage-outer').children().unwrap();
-        //carousel.removeClass("owl-center owl-loaded owl-text-select-on");
-        //$('#owl-data').html('<div id="owl-data" class="owl-carousel"></div>');
-        // add the new items
         for (let i = 0; i < creditsCard.length; i++) {
-          //$("#owl-data").append('<div class="item"><img src="img/credits-' + creditsCard[i] + '.jpg" /></div>');
-          //content += "<div class=\"item\">" + creditsCard[i] + "</div>";
           $.each(creditsCard[i], function (key, value) {
             $("#owl-data").append('<div class="item"><a href="' + serverUrl + '/rurl/' + sid + '/' + value + '"><img src="img/credits-' + key + '.jpg" /></a></div>');
           });
         }
-        /*
-        $.each(creditsCard, function (index, value) {
-          console.log( index + ' : ' + value );
-        });*/
-        //carousel.html(content);
 
         let carousel = $('#owl-data');
 
-        //reinitialize the carousel (call here your method in which you've set specific carousel properties)
         carousel.owlCarousel({
           items: 1,
           lazyLoad: true,
@@ -240,7 +223,6 @@
           autoplayHoverPause: true
         });
 
-        //carousel.trigger('refresh.owl.carousel');
       }
 
       function sendUsePromotion(respId, conditionId) {
