@@ -24,6 +24,7 @@ $app->get('/data/{url_id}',function(Request $request, Response $response, array 
 		$stmt = $this->db->prepare("SELECT condition_id FROM customer_click_promotion WHERE customer_id = :customer_id");
 		$stmt->execute(['customer_id' => $data['id']]);
 		$promotion_click = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$data['promotion_click_condition_id'] = NULL;
 		foreach ($promotion_click as $key => $value) {
 			$data['promotion_click_condition_id'][] = $value['condition_id'];
 		}
