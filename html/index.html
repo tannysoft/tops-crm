@@ -7,6 +7,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="vendor/owl-carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendor/owl-carousel/assets/owl.theme.default.min.css">
 
     <!-- Tops CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -17,14 +19,24 @@
     <div class="app">
       <div class="tops-welcome">
         <div class="container">
-          <h2 class="title">Dear Customers</h2>
+          <h2 class="title">สวัสดี คุณลูกค้าคนพิเศษ</h2>
         </div>
       </div>
       <div class="tops-highlight">
         <div class="container">
-            <a href="#">
-              <img src="img/banner-1.png" alt="Tops" />
-            </a>
+            <div class="tops-card">
+              <div class="tops-card__face tops-card__face--front">
+                  <a href="#">
+                    <img src="img/banner-1.png" alt="Tops" />
+                  </a>
+              </div>
+              <div class="tops-card__face tops-card__face--back">
+                <a href="#">
+                  <img src="img/banner-1.png" alt="Tops" />
+                </a>
+              </div>
+            </div>
+            
         </div>
       </div>
       <div class="tops-condition">
@@ -49,6 +61,43 @@
           </div>
         </div>
       </div>
+      <div class="tops-credits">
+        <div class="container">
+          <div class="credits-title">
+            <img src="img/credits-title.png" alt="Credit Card" />
+          </div>
+          <div class="credits-content">
+            <!-- Set up your HTML -->
+            <div class="owl-carousel owl-theme">
+                <div class="item">
+                  <a href="#">
+                    <img src="https://placehold.it/350x250&text=4" alt="banner 1" />
+                  </a>
+                </div>
+                <div class="item">
+                  <a href="#">
+                    <img src="https://placehold.it/350x250&text=4" alt="banner 1" />
+                  </a>
+                </div>
+                <div class="item">
+                  <a href="#">
+                    <img src="https://placehold.it/350x250&text=4" alt="banner 1" />
+                  </a>
+                </div>
+                <div class="item">
+                  <a href="#">
+                    <img src="https://placehold.it/350x250&text=4" alt="banner 1" />
+                  </a>
+                </div>
+                <div class="item">
+                  <a href="#">
+                    <img src="https://placehold.it/350x250&text=4" alt="banner 1" />
+                  </a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <footer class="tops-footer">
         <div class="container">
           <img src="img/logo-footer.png" alt="Tops" />
@@ -61,5 +110,42 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script src="vendor/jquery-flip/jquery.flip.min.js"></script>
+
+    <script src="vendor/owl-carousel/owl.carousel.min.js"></script>
+
+    <script>
+      let resp;
+      let request = new XMLHttpRequest();
+      request.open('GET', 'http://top-backend.sv.in.th/data/2e700', true);
+
+      request.onload = function() {
+        if (request.status >= 200 && request.status < 400) {
+          // Success!
+          resp = JSON.parse(request.responseText);
+          //console.log(resp);
+          console.log(resp.Condition_ID);
+        } else {
+          // We reached our target server, but it returned an error
+
+        }
+      };
+
+      request.onerror = function() {
+        // There was a connection error of some sort
+      };
+
+      request.send();
+
+      var card = document.querySelector('.tops-card');
+      card.addEventListener( 'click', function() {
+        card.classList.toggle('is-flipped');
+      });
+
+    </script>
+
+    <script src="js/main.js"></script>
+
   </body>
 </html>
