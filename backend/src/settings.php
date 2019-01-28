@@ -19,11 +19,11 @@ return [
         'db' => [
             'host' => 'localhost',
             'dbname' => 'top_db',
-            //'user' => 'top_user',
-            //'pass' => '25iStZTFOd1JQ8us'
+            'user' => 'top_user',
+            'pass' => '25iStZTFOd1JQ8us'
 
-            'user' => 'root',
-            'pass' =>'',
+            //'user' => 'root',
+            //'pass' =>'',
         ],
     ],
 
