@@ -21,15 +21,16 @@ $app->get('/data/{url_id}',function(Request $request, Response $response, array 
 	$data = $stmt ->fetch();
 
 	if($data !== false){
-		$stmt = $this->db->prepare("SELECT rurl_id FROM customer_click_url WHERE customer_id = :cus_id");
-		$stmt->execute(['cus_id' => $data['id']]);
-		$url_click = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		foreach ($url_click as $key => $value) {
-			$data['url'][] = $value['rurl_id'];
+		$stmt = $this->db->prepare("SELECT condition_id FROM customer_click_promotion WHERE customer_id = :customer_id");
+		$stmt->execute(['customer_id' => $data['id']]);
+		$promotion_click = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$data['promotion_click_condition_id'] = NULL;
+		foreach ($promotion_click as $key => $value) {
+			$data['promotion_click_condition_id'][] = $value['condition_id'];
 		}
 	}else{
 		return $response
-		    ->withStatus(200)
+		    ->withStatus(404)
 		    ->withHeader("Content-Type", "application/json;charset=utf-8")
 		    ->write(json_encode(array('error'=>'not have data'), JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
 	}
@@ -68,5 +69,39 @@ $app->get('/rurl/{cus_id}/{rurl_id}',function(Request $request, Response $respon
 
 		}
 		return $response->withStatus(302)->withHeader('Location', $rurl['rurl_full']);
+	}
+});
+
+$app->get('/pclick/{cus_id}/{condition_id}',function(Request $request, Response $response, array $args){
+	$cus_id = $args['cus_id'];
+	$condition_id = $args['condition_id'];
+	$condition_id_query  = $this->db->prepare("SELECT * FROM promotion WHERE condition_id=:condition_id");
+	$condition_id_query->execute(['condition_id' => $condition_id]);
+	//echo $condition_id_query->rowCount();
+
+
+	$cus_id_query  = $this->db->prepare("SELECT * FROM customer WHERE id=:cus_id");
+	$cus_id_query->execute(['cus_id' => $cus_id]);
+	//echo $cus_id_query->rowCount();
+
+	if($condition_id_query->rowCount() == 0 || $cus_id_query->rowCount() == 0){
+		return $response
+    		->withStatus(200)
+    		->withHeader("Content-Type", "application/json;charset=utf-8")
+    		->write(json_encode(array('status'=>'ERR'), JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
+	}else{
+		try{
+			$stmt  = $this->db->prepare("INSERT INTO customer_click_promotion (condition_id,customer_id) VALUES (:condition_id,:customer_id)");
+			$stmt->execute([
+							'condition_id' => $condition_id,
+							'customer_id' => $cus_id
+						]);
+		} catch (Exception $e) {
+
+		}
+		return $response
+    		->withStatus(200)
+    		->withHeader("Content-Type", "application/json;charset=utf-8")
+    		->write(json_encode(array('status'=>'OK'), JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
 	}
 });
