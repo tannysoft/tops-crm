@@ -35,32 +35,32 @@
         </div>
       </div>
       <div class="clear"></div>
-      <div class="tops-condition">
+      <div class="tops-condition d-none">
         <div class="container">
-          <h2 class="title">เงื่อนไขรายการ</h2>
+          <h2 class="title"><a id="cond-title" href="#" data-toggle="modal" data-target="#conditionModal">...</a></h2>
           <div class="promo">
             <div class="item">
-              <a href="#">
-                <img src="img/category-1.png" alt="Foods" />
+              <a id="cat1-link" href="#">
+                <img src="img/category-1.png" id="cat1-image" alt="Foods" />
               </a>
             </div>
             <div class="item">
-              <a href="#">
-                <img src="img/category-2.png" alt="Fruits" />
+              <a id="cat2-link" href="#">
+                <img src="img/category-2.png" id="cat2-image" alt="Fruits" />
               </a>
             </div>
             <div class="item">
-              <a href="#">
-                <img src="img/category-3.png" alt="Clean" />
+              <a id="cat3-link" href="#">
+                <img src="img/category-3.png" id="cat3-image" alt="Clean" />
               </a>
             </div>
           </div>
         </div>
       </div>
-      <div class="tops-credits">
+      <div class="tops-credits d-none">
         <div class="container">
           <div class="credits-title">
-            <img src="img/credits-title.png" alt="Credit Card" />
+            <img src="img/credits-title.png" id="credits-image" alt="Credit Card" />
           </div>
           <div class="credits-content">
             <!-- Set up your HTML -->
@@ -101,6 +101,40 @@
       </footer>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="conditionModal" tabindex="-1" role="dialog" aria-labelledby="conditionModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="conditionModalLabel">เงื่อนไขการรับคะแนน The1</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul id="modal-th" class="d-none">
+              <li>รับคะแนนเดอะวันพิเศษ  เมื่อซื้อเนื้อสัตว์, อาหารทะเล, ผัก, ผลไม้สด, ผลิตภัณฑ์ทำความสะอาดบ้านและเสื้อผ้า (ยกเว้น ถุงขยะ, แผ่นเช็ดทำความสะอาดสำหรับเด็ก และผลิตภัณฑ์ทำความสะอาดรถยนต์) ครบตามที่กำหนด</li>
+              <li>ยอดซื้อคำนวณจากมูลค่าหลังหักส่วนลดทุกชนิดแล้ว</li>
+              <li>คะแนนเดอะวัน 25 เท่า คำนวณจากยอดซื้อสินค้าที่ร่วมรายการ หารด้วย 25 คูณ 25 ที่เซ็นทรัล ฟู้ด ฮอลล์ และ ท็อปส์ ทุกสาขา</li>
+              <li>จำกัดคะแนนสูงสุด 2,000 คะแนน/ใบเสร็จ</li>
+              <li>ระบบจะเพิ่มคะแนนเข้าบัญชีสะสมเดอะวันอัตโนมัติภายใน 1 - 5 วันทำการ นับจากวันที่ซื้อสินค้าตามเงื่อนไข</li>
+              <li>ขอสงวนสิทธิ์การเพิ่มคะแนนพิเศษเฉพาะลูกค้าที่ได้รับสิทธิ์เท่านั้นและขอสงวนสิทธิ์การใช้สิทธิ์แทนทุกกรณี</li>
+              <li>บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด ขอสงวนสิทธิ์ในการเปลี่ยนแปลงเงื่อนไขรายการโดยไม่ต้องแจ้งให้ทราบล่วงหน้า</li>
+            </ul>
+            <ul id="modal-en" class="d-none">
+              <li>Extra The 1 points will be calculated from a purchase of meat, seafood, fresh vegetables, fruits, home cleaning products and fabric detergent (excluding garbage bags, baby wipes and car cleaning products) as required.</li>
+              <li>The purchase price must be net price after deducting discounts.</li>
+              <li>x25 The 1 points is calculated from the purchase price of participating products divided by 25 and multiplied by 25 at any Central Food Hall and Tops.</li>
+              <li>Limit The 1 point redemption to 2,000 points / receipt.</li>
+              <li>The 1 points will be automatically credited to your account within 1 – 5 business days from the date of purchase under required conditions.</li>
+              <li>We reserve the right to give extra points to The1 account owner only and to decline any other individuals to claim the prize.</li>
+              <li>Central Food Retail Co., Ltd. reserves the right to change any terms and conditions without prior notice.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -117,8 +151,8 @@
 
       let resp;
       let request = new XMLHttpRequest();
-      request.open('GET', serverUrl + 'data/fxfjbv1i', true);
-      //request.open('GET', serverUrl + 'data/iiqn0fac', true);
+      //request.open('GET', serverUrl + 'data/fxfjbv1i', true);
+      request.open('GET', serverUrl + 'data/iiqn0fac', true);
 
       request.onload = function() {
         if (request.status >= 200 && request.status < 400) {
@@ -127,11 +161,36 @@
 
           let lang = resp.LANGUAGE;
           let language = lang.toLowerCase();
+          let banner;
 
           if(language == "th") {
+            banner = "img/banner-1.png";
             document.getElementById('welcome-title').innerHTML = "สวัสดี คุณ" + resp.FIRST_TH_NAME + "&nbsp;" + resp.LAST_TH_NAME;
+            document.getElementById('cond-title').innerHTML = "เงื่อนไขรายการ";
+            document.getElementById("cat1-image").src = "img/category-1.png";
+            document.getElementById("cat2-image").src = "img/category-2.png";
+            document.getElementById("cat3-image").src = "img/category-3.png";
+            document.getElementById("credits-image").src = "img/credits-title.png";
+            document.getElementById('conditionModalLabel').innerHTML = "เงื่อนไขการรับคะแนน The1";
+            let elementModal = document.getElementById("modal-th");
+            elementModal.classList.remove("d-none");
+            document.getElementById("cat1-link").href = serverUrl + "rurl/" + resp.id + "/9";
+            document.getElementById("cat2-link").href = serverUrl + "rurl/" + resp.id + "/11";
+            document.getElementById("cat3-link").href = serverUrl + "rurl/" + resp.id + "/13";
           } else {
+            banner = "img/banner-1-en.png";
             document.getElementById('welcome-title').innerHTML = "Welcome " + resp.FIRST_EN_NAME + "&nbsp;" + resp.LAST_EN_NAME;
+            document.getElementById('cond-title').innerHTML = "Conditions";
+            document.getElementById("cat1-image").src = "img/category-1-en.png";
+            document.getElementById("cat2-image").src = "img/category-2-en.png";
+            document.getElementById("cat3-image").src = "img/category-3-en.png";
+            document.getElementById("credits-image").src = "img/credits-title-en.png";
+            document.getElementById('conditionModalLabel').innerHTML = "Extra The 1 Point Conditions";
+            let elementModal = document.getElementById("modal-en");
+            elementModal.classList.remove("d-none");
+            document.getElementById("cat1-link").href = serverUrl + "rurl/" + resp.id + "/10";
+            document.getElementById("cat2-link").href = serverUrl + "rurl/" + resp.id + "/12";
+            document.getElementById("cat3-link").href = serverUrl + "rurl/" + resp.id + "/14";
           }
 
           if(resp.promotion_click_condition_id == null) {
@@ -142,7 +201,7 @@
                 sendUsePromotion(resp.id, resp.Condition_ID);
             });
             
-            document.getElementById("front-image").src = "img/banner-1.png";
+            document.getElementById("front-image").src = banner;
             document.getElementById("back-image").src = "img/" + resp.Condition_ID + "-" + language + ".png";
           } else {
             $("#card").html('<img src="img/' + resp.Condition_ID + '-' + language + '.png">');
@@ -200,8 +259,14 @@
 
       request.send();
 
-      var elementPromo = document.getElementById("card");
+      let elementPromo = document.getElementById("card");
       elementPromo.classList.remove("d-none");
+
+      let elementCondition = document.getElementsByClassName("tops-condition");
+      elementCondition[0].classList.remove("d-none");
+
+      let elementCredits = document.getElementsByClassName("tops-credits");
+      elementCredits[0].classList.remove("d-none");
 
       function reloadCarousel(creditsCard, sid) {
         for (let i = 0; i < creditsCard.length; i++) {
