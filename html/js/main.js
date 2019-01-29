@@ -1,5 +1,9 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
+    setBannerHeight();
+
+    window.addEventListener("resize", setBannerHeight);
+/*
     $('.owl-carousel').owlCarousel({
         items: 1,
         lazyLoad: true,
@@ -7,5 +11,12 @@ $(document).ready(function(){
         dots: true,
         margin: 0
     });
-
+*/
 });
+
+function setBannerHeight() {
+    var img = document.getElementById('front-image');
+    var imageHeight = img.clientHeight;
+
+    document.getElementById("card").style.height = imageHeight + "px";
+}

@@ -19,26 +19,22 @@
     <div class="app">
       <div class="tops-welcome">
         <div class="container">
-          <h2 class="title">สวัสดี คุณลูกค้าคนพิเศษ</h2>
+          <h2 id="welcome-title" class="title">...</h2>
         </div>
       </div>
       <div class="tops-highlight">
         <div class="container">
-            <div class="tops-card">
-              <div class="tops-card__face tops-card__face--front">
-                  <a href="#">
-                    <img src="img/banner-1.png" alt="Tops" />
-                  </a>
-              </div>
-              <div class="tops-card__face tops-card__face--back">
-                <a href="#">
-                  <img src="img/banner-1.png" alt="Tops" />
-                </a>
-              </div>
+          <div id="card" class="tops-card d-none">
+            <div class="front">
+              <img src="img/banner-1.png" id="front-image" alt="Banner" />
+            </div> 
+            <div class="back">
+              <img src="img/banner-1.png" id="back-image" alt="Banner" />
             </div>
-            
+          </div>
         </div>
       </div>
+      <div class="clear"></div>
       <div class="tops-condition">
         <div class="container">
           <h2 class="title">เงื่อนไขรายการ</h2>
@@ -68,8 +64,8 @@
           </div>
           <div class="credits-content">
             <!-- Set up your HTML -->
-            <div class="owl-carousel owl-theme">
-                <div class="item">
+            <div id="owl-data" class="owl-carousel owl-theme">
+<!--            <div class="item">
                   <a href="#">
                     <img src="https://placehold.it/350x250&text=4" alt="banner 1" />
                   </a>
@@ -93,7 +89,7 @@
                   <a href="#">
                     <img src="https://placehold.it/350x250&text=4" alt="banner 1" />
                   </a>
-                </div>
+                </div>-->
             </div>
           </div>
         </div>
@@ -116,19 +112,85 @@
     <script src="vendor/owl-carousel/owl.carousel.min.js"></script>
 
     <script>
+
+      let serverUrl = 'http://top-backend.sv.in.th/';
+
       let resp;
       let request = new XMLHttpRequest();
-      request.open('GET', 'http://top-backend.sv.in.th/data/2e700', true);
+      request.open('GET', serverUrl + 'data/fxfjbv1i', true);
+      //request.open('GET', serverUrl + 'data/iiqn0fac', true);
 
       request.onload = function() {
         if (request.status >= 200 && request.status < 400) {
           // Success!
           resp = JSON.parse(request.responseText);
-          //console.log(resp);
-          console.log(resp.Condition_ID);
+
+          let lang = resp.LANGUAGE;
+          let language = lang.toLowerCase();
+
+          if(language == "th") {
+            document.getElementById('welcome-title').innerHTML = "สวัสดี คุณ" + resp.FIRST_TH_NAME + "&nbsp;" + resp.LAST_TH_NAME;
+          } else {
+            document.getElementById('welcome-title').innerHTML = "Welcome " + resp.FIRST_EN_NAME + "&nbsp;" + resp.LAST_EN_NAME;
+          }
+
+          if(resp.promotion_click_condition_id == null) {
+            $("#card").flip();
+
+            $("#card").on('flip:done',function(){
+                $('#card').addClass('disabled');
+                sendUsePromotion(resp.id, resp.Condition_ID);
+            });
+            
+            document.getElementById("front-image").src = "img/banner-1.png";
+            document.getElementById("back-image").src = "img/" + resp.Condition_ID + "-" + language + ".png";
+          } else {
+            $("#card").html('<img src="img/' + resp.Condition_ID + '-' + language + '.png">');
+          }
+
+          let creditsCard = [];
+          
+          if(resp.CC_Central == 1) {
+            let creditsRedirect;
+            if(language == "en") {
+              creditsRedirect = 1;
+            } else {
+              creditsRedirect = 5;
+            }
+            creditsCard.push({"central": creditsRedirect});
+          }
+          if(resp.CC_SCB == 1) {
+            let creditsRedirect;
+            if(language == "en") {
+              creditsRedirect = 2;
+            } else {
+              creditsRedirect = 6;
+            }
+            creditsCard.push({"scb": creditsRedirect});
+          }
+          if(resp.CC_KTC == 1) {
+            let creditsRedirect;
+            if(language == "en") {
+              creditsRedirect = 3;
+            } else {
+              creditsRedirect = 7;
+            }
+            creditsCard.push({"ktc": creditsRedirect});
+          }
+          if(resp.CC_BAY == 1) {
+            let creditsRedirect;
+            if(language == "en") {
+              creditsRedirect = 4;
+            } else {
+              creditsRedirect = 8;
+            }
+            creditsCard.push({"bay": creditsRedirect});
+          }
+
+          reloadCarousel(creditsCard, resp.id);
+
         } else {
           // We reached our target server, but it returned an error
-
         }
       };
 
@@ -138,10 +200,53 @@
 
       request.send();
 
-      var card = document.querySelector('.tops-card');
-      card.addEventListener( 'click', function() {
-        card.classList.toggle('is-flipped');
-      });
+      var elementPromo = document.getElementById("card");
+      elementPromo.classList.remove("d-none");
+
+      function reloadCarousel(creditsCard, sid) {
+        for (let i = 0; i < creditsCard.length; i++) {
+          $.each(creditsCard[i], function (key, value) {
+            $("#owl-data").append('<div class="item"><a href="' + serverUrl + '/rurl/' + sid + '/' + value + '"><img src="img/credits-' + key + '.jpg" /></a></div>');
+          });
+        }
+
+        let carousel = $('#owl-data');
+
+        carousel.owlCarousel({
+          items: 1,
+          lazyLoad: true,
+          loop: true,
+          dots: true,
+          margin: 0,
+          autoplay: true,
+          autoplayTimeout: 3000,
+          autoplayHoverPause: true
+        });
+
+      }
+
+      function sendUsePromotion(respId, conditionId) {
+        let respPromo;
+        let requestPromo = new XMLHttpRequest();
+        console.log(serverUrl + 'pclick/' + respId + '/' + conditionId);
+        requestPromo.open('GET', serverUrl + 'pclick/' + respId + '/' + conditionId, true);
+
+        requestPromo.onload = function() {
+          if (requestPromo.status >= 200 && requestPromo.status < 400) {
+            // Success!
+            console.log(requestPromo.responseText);
+          } else {
+            // We reached our target server, but it returned an error
+            console.log('error');
+          }
+        };
+
+        requestPromo.onerror = function() {
+          // There was a connection error of some sort
+        };
+
+        requestPromo.send();
+      }
 
     </script>
 

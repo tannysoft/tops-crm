@@ -46,34 +46,15 @@ button:focus {
 .tops-highlight {
     padding: 100px 0 30px;
     .tops-card {
-        width: 100%;
-        height: 100%;
-        transition: transform 1s;
-        transform-style: preserve-3d;
-        cursor: pointer;
-        position: relative;
+        perspective: 614px;
+        &.disabled {
+            pointer-events: none;
+        }
     }
-    
-    .tops-card.is-flipped {
-        transform: rotateY(180deg);
-    }
-    
-    .tops-card__face {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        color: white;
-        text-align: center;
-        font-weight: bold;
-        backface-visibility: hidden;
-    }
-    
-    .tops-card__face--front {
-    }
-    
-    .tops-card__face--back {
-        transform: rotateY(180deg);
-    }
+}
+
+.clear {
+    clear: both;
 }
 
 .tops-condition {
