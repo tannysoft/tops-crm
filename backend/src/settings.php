@@ -20,7 +20,7 @@ return [
             'host' => 'localhost',
             'dbname' => 'top_db',
             'user' => 'top_user',
-            'pass' => '25iStZTFOd1JQ8us'
+            'pass' => '1isylzjkoot0Ut@'
 
             //'user' => 'root',
             //'pass' =>'',
