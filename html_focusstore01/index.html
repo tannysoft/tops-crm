@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    <link rel="stylesheet" href="vendor/owl-carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="vendor/owl-carousel/assets/owl.theme.default.min.css">
+
+     <!-- Tops CSS -->
+     <link rel="stylesheet" href="css/style.css">
+
+    <title>Tops CRM</title>
+  </head>
+  <body>
+    <div class="app">
+        <div class="tops-welcome">
+            <div class="container">
+            <h2 id="welcome-title" class="title">...</h2>
+            </div>
+        </div>
+        <div class="tops-highlight">
+            <div class="container">
+                <div class="front">
+                    <img src="img/STORE110.jpg" id="front-image" alt="Banner" />
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="tops-card">
+            <div class="container">
+                <h2 class="title"><a id="cond-title" href="#" data-toggle="modal" data-target="#conditionModal">บัตรของขวัญพิเศษเฉพาะคุณ</a></h2>
+                <div class="promo">
+                    <div id="owl-data" class="owl-carousel owl-theme">
+                        <div class="item">
+                            <a id="cat1-link" href="#">
+                                <img src="img/gift-100-th.jpg" id="cat1-image" alt="Foods" />
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a id="cat1-link" href="#">
+                                <img src="img/gift-100-th.jpg" id="cat1-image" alt="Foods" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="more-condition">
+                        <a href="#">
+                            <img src="img/icon-condition.svg" alt="more" />
+                            <h3>เงื่อนไขการใช้คูปอง</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tops-card">
+            <div class="container">
+                <h2 class="title -credits">
+                    <a id="cond-title" href="#" data-toggle="modal" data-target="#conditionModal">โปรโมชั่นบัตรเครดิต</a>
+                    <span>เมื่อช็อปที่ Central Food Hall & Tops</span>
+                </h2>
+                <div class="promo">
+                    <div id="owl-credits" class="owl-carousel owl-theme">
+                        <div class="item">
+                            <a id="cat1-link" href="#">
+                                <img src="img/gift-100-th.jpg" id="cat1-image" alt="Foods" />
+                            </a>
+                        </div>
+                        <div class="item">
+                            <a id="cat1-link" href="#">
+                                <img src="img/gift-100-th.jpg" id="cat1-image" alt="Foods" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="more-condition">
+                        <a href="#">
+                            <img src="img/icon-condition.svg" alt="more" />
+                            <h3>เงื่อนไขการใช้คูปอง</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="tops-footer">
+            <div class="container">
+                <img src="img/logo-footer.png" alt="Tops" />
+            </div>
+        </footer>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+
+    <script src="vendor/owl-carousel/owl.carousel.min.js"></script>
+
+    <script>
+        let carousel = $('#owl-data');
+
+        carousel.owlCarousel({
+            items: 1,
+            lazyLoad: true,
+            loop: true,
+            dots: true,
+            margin: 0,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true
+        });
+
+        let carousel_credits = $('#owl-credits');
+
+        carousel_credits.owlCarousel({
+            items: 1,
+            lazyLoad: true,
+            loop: true,
+            dots: true,
+            margin: 0,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true
+        });
+    </script>
+  </body>
+</html>
