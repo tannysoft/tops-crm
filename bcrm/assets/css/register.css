@@ -1,0 +1,39 @@
+html, body {
+	height: 100vh;
+	margin: 0px;
+	background-image: url("../img/register-background.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+input::placeholder {
+	color: #dae0e5 !important;
+	font-weight: normal !important;
+}
+
+a,
+a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+.wrapper {
+	height: 100vh;
+	font-size: 1.2rem;
+	color: #fff;
+	/*background-color: #c21e25;*/
+	position: relative;
+}
+
+.wrapper .container{
+	margin-top: 40px;
+}
+.btn-next {
+	padding: .375rem 5rem;
+	font-size: 2rem;
+}
+
+.form-control-lg {
+	text-align: center;
+	font-size: 2rem;
+	font-weight: bold;
+}

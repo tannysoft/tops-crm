@@ -1,0 +1,256 @@
+/*@import url('https://fonts.googleapis.com/css?family=Pattaya&subset=thai');*/
+@font-face {
+	font-family: "Krart";
+	src: url("../fonts/krart/krart-black.woff2") format("woff2"), url("../fonts/krart/krart-black.woff") format("woff"), url("../fonts/krart/krart-black.otf") format("opentype");
+	font-style: normal;
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: "Krart";
+	src: url("../fonts/krart/krart-black-italic.woff2") format("woff2"), url("../fonts/krart/krart-black-italic.woff") format("woff"), url("../fonts/krart/krart-black-italic.otf") format("opentype");
+	font-style: italic;
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: "Krart";
+	src: url("../fonts/krart/krart-medium.woff2") format("woff2"), url("../fonts/krart/krart-medium.woff") format("woff"), url("../fonts/krart/krart-medium.otf") format("opentype");
+	font-style: normal;
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: "Krart";
+	src: url("../fonts/krart/krart-medium-italic.woff2") format("woff2"), url("../fonts/krart/krart-medium-italic.woff") format("woff"), url("../fonts/krart/krart-medium-italic.otf") format("opentype");
+	font-style: italic;
+	font-weight: 400;
+	}
+
+@font-face {
+	font-family: "Krart";
+	src: url("../fonts/krart/krart-bold.woff2") format("woff2"), url("../fonts/krart/krart-bold.woff") format("woff"), url("../fonts/krart/krart-bold.otf") format("opentype");
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "Krart";
+	src: url("../fonts/krart/krart-book.woff2") format("woff2"), url("../fonts/krart/krart-book.woff") format("woff"), url("../fonts/krart/krart-book.otf") format("opentype");
+	font-style: normal;
+	font-weight: 300;
+}
+
+/* body {
+	margin: 0;
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	text-align: left;
+	background-color: #fff;
+} */
+
+body {
+	font-family: 'Krart', 'sans-serif';
+	background-color: #f1f3f4;
+}
+
+.wrapper {
+	max-width: 600px;
+	margin: 0 auto;
+}
+header.fixed {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	max-width: 600px;
+}
+footer.fixed {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	max-width: 600px;
+}
+
+.btn-red {
+	color: #fff;
+	background-color: red;
+}
+.btn-red.disabled,
+.btn-red:disabled {
+	color: #212529;
+	background-color: #000;
+	opacity: 1;
+}
+
+.owl-theme .owl-nav.disabled+.owl-dots {
+	margin-top: 0;
+}
+.owl-theme .owl-dots .owl-dot span {
+	margin: 5px 3px;
+	background-color: #333;
+}
+.owl-theme .owl-dots .owl-dot.active span {
+	width: 30px;
+	background-color: #333;
+}
+
+.modal-body ul {
+	padding: 0 0 0 15px;
+}
+.modal-header {
+	font-family: 'Krart', 'sans-serif';
+	font-weight: 700;
+}
+
+.barcode-image {
+	padding-top: 0;
+	padding-bottom: 0;
+	text-align: center;
+}
+
+/**************/
+/* Tops Modal */
+/**************/
+
+.modal-tops {
+
+}
+.modal-tops .modal-dialog {
+	-webkit-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+	top: 50%;
+	margin: 0 auto;
+	padding: 15px;
+}
+.modal-tops .modal-content {
+	color: #000;
+	border-radius: .5rem;
+	-webkit-box-shadow: 2px 1px 2px 0 rgba(0, 0, 0, 0.5);
+	box-shadow: 2px 1px 2px 0 rgba(0, 0, 0, 0.5);
+}
+.modal-tops .modal-footer {
+	padding: 0;
+}
+.modal-tops .modal-footer .btn-finish {
+	font-size: 1.5rem;
+	width: 100%;
+	border: none;
+	background: red;
+	color: #fff;
+}
+
+#condition-modal .modal-dialog {
+	-webkit-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+	top: 50%;
+	margin: 0 auto;
+	padding: 15px;
+}
+#condition-modal .modal-content {
+	color: #000;
+	border-radius: .5rem;
+	-webkit-box-shadow: 2px 1px 2px 0 rgba(0, 0, 0, 0.5);
+	box-shadow: 2px 1px 2px 0 rgba(0, 0, 0, 0.5);
+}
+#condition-modal .modal-footer {
+	padding: 0;
+	text-align: center;
+}
+#condition-modal .modal-footer .btn {
+	padding: 1rem;
+	font-size: 1.5rem;
+	width: 100%;
+	border: 0;
+	background: transparent;
+	color: #333;
+	font-weight: 700;
+}
+#condition-modal .modal-footer .btn-cancel {
+	border-right: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom-left-radius: 1.2rem;
+}
+#condition-modal .modal-footer .btn-confirm {
+	margin-left: -.25rem;
+	border-bottom-right-radius: 1.2rem;
+}
+
+#barcode-modal .modal-dialog {
+	-webkit-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+	top: 50%;
+	color: #1f1f1f;
+	/*max-width: 340px;*/
+	margin: 0 auto;
+	padding: 15px;
+}
+#barcode-modal .modal-content {
+	background-color: transparent;
+	border: none;
+}
+#barcode-modal .modal-body {
+	position: relative;
+	background-image: url("../img/coupon-background.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	border-radius: .5rem;
+}
+#barcode-modal .btn-close span {
+	color: #8c8c8c;
+	font-size: 2rem;
+	padding: 0 25px 0 0;
+}
+#barcode-modal .barcode-container {
+	padding: 2.3rem 2.5rem 1rem 2.5rem;
+}
+#barcode-modal .modal-footer {
+	padding: 0;
+	text-align: center;
+	border-top: none;
+	margin-top: .5rem;
+}
+
+#barcode-modal .modal-footer .btn-finish {
+	font-size: 1.5rem;
+	width: 100%;
+	border: none;
+	background: red;
+	color: #fff;
+	border-radius: .5rem;
+}
+
+#privacy-policy-modal .modal-dialog {
+	-webkit-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+	top: 50%;
+	margin: 0 auto;
+	padding: 15px;
+}
+#privacy-policy-modal .modal-content {
+	color: #000;
+	border-radius: .5rem;
+	-webkit-box-shadow: 2px 1px 2px 0 rgba(0, 0, 0, 0.5);
+	box-shadow: 2px 1px 2px 0 rgba(0, 0, 0, 0.5);
+}
+#privacy-policy-modal .modal-body {
+	overflow: hidden;
+    overflow-y: auto;
+	max-height: 500px;
+}
+#privacy-policy-modal .modal-footer .btn-finish {
+	border-radius: 0 0 .5rem .5rem;
+}
+/*#apply {
+	font-size: 1.5rem;
+	border-radius: unset;
+	padding-bottom: env(safe-area-inset-bottom);
+	padding-top: 20px;
+	padding-bottom: 20px;
+}*/
