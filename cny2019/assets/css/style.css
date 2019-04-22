@@ -93,3 +93,9 @@ button:focus {
 
 .modal-body ul {
   padding: 0 0 0 15px; }
+
+.owl-theme .owl-dots .owl-dot span {
+    background: #fff; }
+
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    background: #d3005d; }

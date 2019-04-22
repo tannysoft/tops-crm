@@ -14,18 +14,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="container">
           <div id="card" class="tops-card">
             <div class="front">
-              <?php if($lang=='th'): ?>
-              <img src="<?php echo base_url(); ?>assets/img/banner-1.png" id="front-image" alt="Banner" />
-              <?php else: ?>
-              <img src="<?php echo base_url(); ?>assets/img/banner-1-en.png" id="front-image" alt="Banner" />
-              <?php endif; ?>
+              <img src="<?php echo base_url(); ?>assets/img/banner-1-<?php echo ($lang=='th') ? 'th': 'en'; ?>.png" id="front-image" alt="Banner" />
             </div>
             <div class="back">
-              <?php if($lang=='th'): ?>
-              <img src="<?php echo base_url(); ?>assets/img/43582-th.png" alt="Banner" />
-              <?php else: ?>
-              <img src="<?php echo base_url(); ?>assets/img/43582-en.png" alt="Banner" />
-              <?php endif; ?>
+              <img src="<?php echo base_url(); ?>assets/img/43582-<?php echo ($lang=='th') ? 'th': 'en'; ?>.png" alt="Banner" />
             </div>
           </div>
         </div>
@@ -37,29 +29,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="promo">
             <div class="item">
               <a id="cat1-link" href="<?php echo ($lang=='th') ? 'https://www.tops.co.th/th/campaign/promotion-product-chinese-new-year-2019?utm_source=sms_the1&utm_medium=sms&utm_campaign=|da:20190131|ch:sms|br:topsonline|cat:all|cm:the1-chinesenewyear|' : 'https://www.tops.co.th/en/campaign/promotion-product-chinese-new-year-2019?utm_source=sms_the1&utm_medium=sms&utm_campaign=|da:20190131|ch:sms|br:topsonline|cat:all|cm:the1-chinesenewyear|'; ?>">
-                <?php if($lang=='th'): ?>
-                <img src="<?php echo base_url(); ?>assets/img/category-1.png" alt="Foods" />
-                <?php else: ?>
-                <img src="<?php echo base_url(); ?>assets/img/category-1-en.png" alt="Foods" />
-                <?php endif; ?>
+                <img src="<?php echo base_url(); ?>assets/img/category-1-<?php echo ($lang=='th') ? 'th': 'en'; ?>.png" alt="Foods" />
               </a>
             </div>
             <div class="item">
               <a id="cat2-link" href="<?php echo ($lang=='th') ? 'https://www.tops.co.th/th/campaign/promotion-product-chinese-new-year-2019?utm_source=sms_the1&utm_medium=sms&utm_campaign=|da:20190131|ch:sms|br:topsonline|cat:all|cm:the1-chinesenewyear|' : 'https://www.tops.co.th/en/campaign/promotion-product-chinese-new-year-2019?utm_source=sms_the1&utm_medium=sms&utm_campaign=|da:20190131|ch:sms|br:topsonline|cat:all|cm:the1-chinesenewyear|'; ?>">
-                <?php if($lang=='th'): ?>
-                <img src="<?php echo base_url(); ?>assets/img/category-2.png" alt="Fruits" />
-                <?php else: ?>
-                <img src="<?php echo base_url(); ?>assets/img/category-2-en.png" alt="Fruits" />
-                <?php endif; ?>
+                <img src="<?php echo base_url(); ?>assets/img/category-2-<?php echo ($lang=='th') ? 'th': 'en'; ?>.png" alt="Fruits" />
               </a>
             </div>
             <div class="item">
               <a id="cat3-link" href="<?php echo ($lang=='th') ? 'https://www.tops.co.th/th/campaign/promotion-cleaning-chinese-new-year-2019?utm_source=sms_the1&utm_medium=sms&utm_campaign=|da:20190131|ch:sms|br:topsonline|cat:all|cm:the1-chinesenewyear|' : 'https://www.tops.co.th/en/campaign/promotion-cleaning-chinese-new-year-2019?utm_source=sms_the1&utm_medium=sms&utm_campaign=|da:20190131|ch:sms|br:topsonline|cat:all|cm:the1-chinesenewyear|'; ?>">
-                <?php if($lang=='th'): ?>
-                <img src="<?php echo base_url(); ?>assets/img/category-3.png" alt="Clean" />
-                <?php else: ?>
-                <img src="<?php echo base_url(); ?>assets/img/category-3-en.png" alt="Clean" />
-                <?php endif; ?>
+                <img src="<?php echo base_url(); ?>assets/img/category-3-<?php echo ($lang=='th') ? 'th': 'en'; ?>.png" alt="Clean" />
               </a>
             </div>
           </div>
@@ -68,33 +48,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="tops-credits">
         <div class="container">
           <div class="credits-title">
-            <?php if($lang=='th'): ?>
-            <img src="<?php echo base_url(); ?>assets/img/credits-title.png" alt="Credit Card" />
-            <?php else: ?>
-            <img src="<?php echo base_url(); ?>assets/img/credits-title-en.png" alt="Credit Card" />
-            <?php endif; ?>
+            <img src="<?php echo base_url(); ?>assets/img/credits-title-<?php echo ($lang=='th') ? 'th': 'en'; ?>.png" alt="Credit Card" />
           </div>
           <div class="credits-content">
             <!-- Set up your HTML -->
             <div id="owl-data" class="owl-carousel owl-theme">
                 <div class="item">
                   <a href="<?php echo ($lang=='th') ? 'https://bit.ly/2B7NYOx' : 'https://bit.ly/2sR112a'; ?>">
-                    <img src="<?php echo base_url(); ?>assets/img/credits-central.jpg" alt="Central" />
+                    <img src="<?php echo base_url(); ?>assets/img/credits-central-<?php echo ($lang=='th') ? 'th': 'en'; ?>.jpg" alt="Central" />
                   </a>
                 </div>
                 <div class="item">
                   <a href="<?php echo ($lang=='th') ? 'https://bit.ly/2B5whzd' : 'https://bit.ly/2DC23FJ'; ?>">
-                    <img src="<?php echo base_url(); ?>assets/img/credits-scb.jpg" alt="SCB" />
+                    <img src="<?php echo base_url(); ?>assets/img/credits-scb-<?php echo ($lang=='th') ? 'th': 'en'; ?>.jpg" alt="SCB" />
                   </a>
                 </div>
                 <div class="item">
                   <a href="<?php echo ($lang=='th') ? 'https://bit.ly/2RUYFyq' : 'https://bit.ly/2Rk8rVw'; ?>">
-                    <img src="<?php echo base_url(); ?>assets/img/credits-ktc.jpg" alt="KTC" />
+                    <img src="<?php echo base_url(); ?>assets/img/credits-ktc-<?php echo ($lang=='th') ? 'th': 'en'; ?>.jpg" alt="KTC" />
                   </a>
                 </div>
                 <div class="item">
                   <a href="<?php echo ($lang=='th') ? 'https://bit.ly/2G4uRIw' : 'https://bit.ly/2S9hZHv'; ?>">
-                    <img src="<?php echo base_url(); ?>assets/img/credits-bay.jpg" alt="BAY" />
+                    <img src="<?php echo base_url(); ?>assets/img/credits-bay-<?php echo ($lang=='th') ? 'th': 'en'; ?>.jpg" alt="BAY" />
                   </a>
                 </div>
             </div>

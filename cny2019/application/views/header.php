@@ -21,4 +21,22 @@
     <link rel="apple-touch-icon" href="https://www.tops.co.th/assets/icons/apple-icon.png">
     <!-- To run web application in full- screen -->
     <meta name="apple-mobile-web-app-capable" content="yes">
+<?php /*
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104800123-6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      gtag('config', 'UA-104800123-6');
+    </script>*/ ?>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104800123-8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-104800123-8');
+    </script>
   </head>

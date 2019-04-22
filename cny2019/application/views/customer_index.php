@@ -14,10 +14,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="container">
           <div id="card" class="tops-card d-none">
             <div class="front">
-              <img src="<?php echo base_url(); ?>assets/img/banner-1.png" id="front-image" alt="Banner" />
+              <img src="<?php echo base_url(); ?>assets/img/banner-1-th.png" id="front-image" alt="Banner" />
             </div> 
             <div class="back">
-              <img src="<?php echo base_url(); ?>assets/img/banner-1.png" id="back-image" alt="Banner" />
+              <img src="<?php echo base_url(); ?>assets/img/banner-1-th.png" id="back-image" alt="Banner" />
             </div>
           </div>
         </div>
@@ -29,17 +29,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="promo">
             <div class="item">
               <a id="cat1-link" href="#">
-                <img src="<?php echo base_url(); ?>assets/img/category-1.png" id="cat1-image" alt="Foods" />
+                <img src="<?php echo base_url(); ?>assets/img/category-1-th.png" id="cat1-image" alt="Foods" />
               </a>
             </div>
             <div class="item">
               <a id="cat2-link" href="#">
-                <img src="<?php echo base_url(); ?>assets/img/category-2.png" id="cat2-image" alt="Fruits" />
+                <img src="<?php echo base_url(); ?>assets/img/category-2-th.png" id="cat2-image" alt="Fruits" />
               </a>
             </div>
             <div class="item">
               <a id="cat3-link" href="#">
-                <img src="<?php echo base_url(); ?>assets/img/category-3.png" id="cat3-image" alt="Clean" />
+                <img src="<?php echo base_url(); ?>assets/img/category-3-th.png" id="cat3-image" alt="Clean" />
               </a>
             </div>
           </div>
@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="tops-credits d-none">
         <div class="container">
           <div class="credits-title">
-            <img src="<?php echo base_url(); ?>assets/img/credits-title.png" id="credits-image" alt="Credit Card" />
+            <img src="<?php echo base_url(); ?>assets/img/credits-title-th.png" id="credits-image" alt="Credit Card" />
           </div>
           <div class="credits-content">
             <!-- Set up your HTML -->
@@ -102,14 +102,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
     <script src="<?php echo base_url(); ?>assets/vendor/jquery-flip/jquery.flip.min.js"></script>
-
     <script src="<?php echo base_url(); ?>assets/vendor/owl-carousel/owl.carousel.min.js"></script>
 
     <script>
 
-	  let unique_id = '<?php echo $unique_id; ?>';
+	    let unique_id = '<?php echo $unique_id; ?>';
       let serverUrl = 'https://crm.tops.co.th/';
 
       let resp;
@@ -121,112 +119,68 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           // Success!
           resp = JSON.parse(request.responseText);
 
-          let lang = resp.LANGUAGE;
-          let language = lang.toLowerCase();
+          let language = resp.data.lang;
+          //let language = lang.toLowerCase();
           let banner;
 
           if(language == "th") {
-            banner = "<?php echo base_url(); ?>assets/img/banner-1.png";
-            document.getElementById('welcome-title').innerHTML = "สวัสดี คุณ" + resp.FIRST_TH_NAME + "&nbsp;" + resp.LAST_TH_NAME;
+            document.getElementById("front-image").src = resp.data.th.front_image;
+            document.getElementById("back-image").src = resp.data.th.back_image;
+            document.getElementById('welcome-title').innerHTML = "สวัสดี คุณ" + resp.data.th.firstname + "&nbsp;" + resp.data.th.lastname;
             document.getElementById('cond-title').innerHTML = "เงื่อนไขรายการ";
-            document.getElementById("cat1-image").src = "assets/img/category-1.png";
-            document.getElementById("cat2-image").src = "assets/img/category-2.png";
-            document.getElementById("cat3-image").src = "assets/img/category-3.png";
-            document.getElementById("credits-image").src = "assets/img/credits-title.png";
+            document.getElementById("cat1-image").src = resp.data.th.cat_image_1;
+            document.getElementById("cat2-image").src = resp.data.th.cat_image_2;
+            document.getElementById("cat3-image").src = resp.data.th.cat_image_3;
+            document.getElementById("credits-image").src = "assets/img/credits-title-th.png";
             document.getElementById('conditionModalLabel').innerHTML = "เงื่อนไขการรับคะแนน The1";
             let elementModal = document.getElementById("modal-th");
             elementModal.classList.remove("d-none");
-            document.getElementById("cat1-link").href = serverUrl + "rurl/" + resp.id + "/9";
-            document.getElementById("cat2-link").href = serverUrl + "rurl/" + resp.id + "/11";
-            document.getElementById("cat3-link").href = serverUrl + "rurl/" + resp.id + "/13";
+            document.getElementById("cat1-link").href = resp.data.th.cat_link_1;
+            document.getElementById("cat2-link").href = resp.data.th.cat_link_2;
+            document.getElementById("cat3-link").href = resp.data.th.cat_link_3;
           } else {
-            banner = "<?php echo base_url(); ?>assets/img/banner-1-en.png";
-            document.getElementById('welcome-title').innerHTML = "Hello " + resp.FIRST_EN_NAME + "&nbsp;" + resp.LAST_EN_NAME;
+            document.getElementById("front-image").src = resp.data.en.front_image;
+            document.getElementById("back-image").src = resp.data.en.back_image;
+            document.getElementById('welcome-title').innerHTML = "Hello " + resp.data.en.firstname + "&nbsp;" + resp.data.en.lastname;
             document.getElementById('cond-title').innerHTML = "Conditions";
-            document.getElementById("cat1-image").src = "assets/img/category-1-en.png";
-            document.getElementById("cat2-image").src = "assets/img/category-2-en.png";
-            document.getElementById("cat3-image").src = "assets/img/category-3-en.png";
+            document.getElementById("cat1-image").src = resp.data.en.cat_image_1;
+            document.getElementById("cat2-image").src = resp.data.en.cat_image_2;
+            document.getElementById("cat3-image").src = resp.data.en.cat_image_3;
             document.getElementById("credits-image").src = "assets/img/credits-title-en.png";
             document.getElementById('conditionModalLabel').innerHTML = "Extra The 1 Point Conditions";
             let elementModal = document.getElementById("modal-en");
             elementModal.classList.remove("d-none");
-            document.getElementById("cat1-link").href = serverUrl + "rurl/" + resp.id + "/10";
-            document.getElementById("cat2-link").href = serverUrl + "rurl/" + resp.id + "/12";
-            document.getElementById("cat3-link").href = serverUrl + "rurl/" + resp.id + "/14";
+            document.getElementById("cat1-link").href = resp.data.en.cat_link_1;
+            document.getElementById("cat2-link").href = resp.data.en.cat_link_2;
+            document.getElementById("cat3-link").href = resp.data.en.cat_link_3;
           }
 
-          if(resp.promotion_click_condition_id == null) {
+          let src_str = document.getElementById("modal-body").innerHTML;
+          let str_rep = src_str.replace(/{{ points }}/g,resp.data.points);
+          document.getElementById("modal-body").innerHTML = str_rep;
+
+          if(resp.data.promotion_click_condition_id == null) {
             $("#card").flip();
 
             $("#card").on('flip:done',function(){
                 $('#card').addClass('disabled');
-                sendUsePromotion(resp.id, resp.Condition_ID);
+                sendUsePromotion(resp.data.id, resp.data.Condition_ID);
             });
-            
-            document.getElementById("front-image").src = banner;
-			document.getElementById("back-image").src = "assets/img/" + resp.Condition_ID + "-" + language + ".png";
 
-			if(resp.Condition_ID == 43582) {
-				let src_str = document.getElementById("modal-body").innerHTML;
-				let str_rep = src_str.replace(/{{ points }}/g,"25");
-				document.getElementById("modal-body").innerHTML = str_rep;
-			}else if(resp.Condition_ID == 43583) {
-				let src_str = document.getElementById("modal-body").innerHTML;
-				let str_rep = src_str.replace(/{{ points }}/g,"15");
-				document.getElementById("modal-body").innerHTML = str_rep;
-			}else if(resp.Condition_ID == 43584) {
-				let src_str = document.getElementById("modal-body").innerHTML;
-				let str_rep = src_str.replace(/{{ points }}/g,"10");
-				document.getElementById("modal-body").innerHTML = str_rep;
-			}else if(resp.Condition_ID == 43585) {
-				let src_str = document.getElementById("modal-body").innerHTML;
-				let str_rep = src_str.replace(/{{ points }}/g,"10");
-				document.getElementById("modal-body").innerHTML = str_rep;
-			}
           } else {
-            $("#card").html('<img src="assets/img/' + resp.Condition_ID + '-' + language + '.png">');
+            if(language=='th') {
+              $("#card").html('<img src="' + resp.data.th.back_image + '" id="front-image" alt="Banner" />');
+            } else {
+              $("#card").html('<img src="' + resp.data.en.back_image + '" id="front-image" alt="Banner" />');
+            }
           }
 
-          let creditsCard = [];
-          
-          if(resp.CC_Central == 1) {
-            let creditsRedirect;
-            if(language == "en") {
-              creditsRedirect = 1;
-            } else {
-              creditsRedirect = 5;
-            }
-            creditsCard.push({"central": creditsRedirect});
+          //let creditsCard = [];
+          if(language=='th') {
+            reloadCarousel(resp.data.th.credits.data, resp.data.credits.counts);
+          } else {
+            reloadCarousel(resp.data.en.credits.data, resp.data.credits.counts);
           }
-          if(resp.CC_SCB == 1) {
-            let creditsRedirect;
-            if(language == "en") {
-              creditsRedirect = 2;
-            } else {
-              creditsRedirect = 6;
-            }
-            creditsCard.push({"scb": creditsRedirect});
-          }
-          if(resp.CC_KTC == 1) {
-            let creditsRedirect;
-            if(language == "en") {
-              creditsRedirect = 3;
-            } else {
-              creditsRedirect = 7;
-            }
-            creditsCard.push({"ktc": creditsRedirect});
-          }
-          if(resp.CC_BAY == 1) {
-            let creditsRedirect;
-            if(language == "en") {
-              creditsRedirect = 4;
-            } else {
-              creditsRedirect = 8;
-            }
-            creditsCard.push({"bay": creditsRedirect});
-          }
-
-          reloadCarousel(creditsCard, resp.id);
 
         } else {
           // We reached our target server, but it returned an error
@@ -248,25 +202,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       let elementCredits = document.getElementsByClassName("tops-credits");
       elementCredits[0].classList.remove("d-none");
 
-      function reloadCarousel(creditsCard, sid) {
-        for (let i = 0; i < creditsCard.length; i++) {
-          $.each(creditsCard[i], function (key, value) {
-            $("#owl-data").append('<div class="item"><a href="' + serverUrl + '/rurl/' + sid + '/' + value + '"><img src="assets/img/credits-' + key + '.jpg" /></a></div>');
+      function reloadCarousel(creditsCard, creditsCount) {
+
+        if(creditsCount > 1) {
+
+          $.each(creditsCard, function (key, value) {
+            $("#owl-data").append('<div class="item"><a href="' + value.link + '"><img src="' + value.image + '" /></a></div>');
+          });
+
+          let carousel = $('#owl-data');
+
+          carousel.owlCarousel({
+            items: 1,
+            lazyLoad: true,
+            loop: true,
+            dots: true,
+            margin: 0,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true
+          });
+
+        } else {
+          $.each(creditsCard, function (key, value) {
+            $("#owl-data").removeClass();
+            $("#owl-data").html('<a href="' + value.link + '"><img src="' + value.image + '" /></a>');
           });
         }
-
-        let carousel = $('#owl-data');
-
-        carousel.owlCarousel({
-          items: 1,
-          lazyLoad: true,
-          loop: true,
-          dots: true,
-          margin: 0,
-          autoplay: true,
-          autoplayTimeout: 3000,
-          autoplayHoverPause: true
-        });
 
       }
 
