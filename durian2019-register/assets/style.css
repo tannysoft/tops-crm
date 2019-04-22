@@ -1,0 +1,33 @@
+html,
+body{
+ height: 100%;
+ color: #222;
+ background-color: #f3f3f3 !important; 
+}
+
+#cover {
+  background-size: cover;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+#cover-caption {
+  width: 100%;
+}
+
+h3{
+  color: #000;
+}
+
+.col-sm-6{
+  background-color: #FFF;
+  padding: 0px;
+}
+
+.banner{
+	padding-top: 0px;
+	padding-right: -25px;
+	padding-left: -25px;
+}
