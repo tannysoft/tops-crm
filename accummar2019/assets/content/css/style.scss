@@ -1,0 +1,756 @@
+/*-------------------
+- Function
+-------------------*/
+$width-breakpoints: (
+        D: 1400px, //Desktop
+        L: 1200px, //Laptop
+        T: 992px, //Tablet
+        M: 768px, //Mobile
+        XS: 576px //Small Mobile
+);
+@mixin BREAKPOINT($breakpoint) {
+  $width: map-get($width-breakpoints, $breakpoint);
+  @if $width != null {
+    @media screen and (max-width: $width) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+/*-------------------
+- Variable
+-------------------*/
+$color-theme: #ff3d57;
+$color-font: #a26046;
+
+/*-------------------
+- Fonts
+-------------------*/
+@font-face {
+  font-family: 'AkrobatExtraBold';
+  src: url('fonts/AkrobatExtraBold.eot');
+  src: url('fonts/AkrobatExtraBold.eot') format('embedded-opentype'), url('fonts/AkrobatExtraBold.woff2') format('woff2'), url('fonts/AkrobatExtraBold.woff') format('woff'), url('fonts/AkrobatExtraBold.ttf') format('truetype'), url('fonts/AkrobatExtraBold.svg#AkrobatExtraBold') format('svg');
+}
+@font-face {
+  font-family: 'SukhumvitSetLight';
+  src: url('fonts/SukhumvitSetLight.eot');
+  src: url('fonts/SukhumvitSetLight.eot') format('embedded-opentype'), url('fonts/SukhumvitSetLight.woff2') format('woff2'), url('fonts/SukhumvitSetLight.woff') format('woff'), url('fonts/SukhumvitSetLight.ttf') format('truetype'), url('fonts/SukhumvitSetLight.svg#SukhumvitSetLight') format('svg');
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SukhumvitSetBold';
+  src: url('fonts/SukhumvitSetBold.eot');
+  src: url('fonts/SukhumvitSetBold.eot') format('embedded-opentype'), url('fonts/SukhumvitSetBold.woff2') format('woff2'), url('fonts/SukhumvitSetBold.woff') format('woff'), url('fonts/SukhumvitSetBold.ttf') format('truetype'), url('fonts/SukhumvitSetBold.svg#SukhumvitSetBold') format('svg');
+  font-style: normal;
+}
+
+/*-------------------
+- Element
+-------------------*/
+html, body {
+  font-family: 'SukhumvitSetLight';
+  font-size: 3vw;
+  color: $color-font;
+  background: #f9f8f8;
+}
+
+ul {
+  &.cleargap {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &.inline {
+    li {
+      display: inline-block;
+    }
+  }
+
+  &.list-style {
+    padding-left: 25px;
+
+    li {
+      color: #8d8d8c;
+      margin-bottom: 15px;
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: -20px;
+        top: 8px;
+        width: 10px;
+        height: 10px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        background: #89d6fe;
+      }
+    }
+  }
+}
+
+a {
+  -webkit-transition: all linear 200ms;
+  -moz-transition: all linear 200ms;
+  -ms-transition: all linear 200ms;
+  -o-transition: all linear 200ms;
+  transition: all linear 200ms;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+p {
+  font-size: 3vw;
+}
+
+b{
+  font-family: 'SukhumvitSetBold';
+}
+
+img {
+  max-width: 100%;
+}
+
+.btn-style {
+  padding: 7px 12px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  background: $color-theme;
+  display: inline-block;
+  -webkit-transition: all linear 200ms;
+  -moz-transition: all linear 200ms;
+  -ms-transition: all linear 200ms;
+  -o-transition: all linear 200ms;
+  transition: all linear 200ms;
+
+  &.btn-style-sm {
+    font-size: 10px;
+    padding: 5px 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    background: $color-theme;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.wrap-flex {
+  display: flex;
+
+  &.flex-full {
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.no-gap{
+  padding-left: 0;
+  padding-right: 0;
+}
+.w-100{
+  @include BREAKPOINT(T){
+    max-width: 100% !important;
+    overflow: hidden;
+  }
+}
+.gap-sm{
+  padding-left: 3vw !important;
+  padding-right: 3vw !important;
+}
+.gap-sm-r{
+  padding-right: 3vw !important;
+}
+.gap-txt{
+  padding-top: 3vw !important;
+  padding-bottom: 3vw !important;
+}
+.pr-1{
+  padding-right: 1vw;
+}
+.pl-1{
+  padding-left: 1vw;
+}
+.ml--5{
+  margin-left: -5vw;
+}
+
+/*-------------------
+- Header & Footer
+-------------------*/
+.header{
+  img{
+    width: 100%;
+  }
+}
+footer{
+  text-align: center;
+  background: #ebecee;
+  padding: 2rem 0;
+  .copyright{
+    font-size: 4vw;
+  }
+  .social{
+    li{
+      margin: 0 0.5rem;
+    }
+  }
+}
+
+/*-------------------
+- Home
+-------------------*/
+.section{
+  background: url("../images/active/bg-section.jpg") no-repeat;
+  background-size: cover;
+}
+.section-1{
+  .wrap-title{
+    font-family: 'AkrobatExtraBold';
+    color: #ff3d57;
+  }
+  .title{
+    font-size: 15vw;
+    line-height: 1;
+    margin: -80px 0 0 20px;
+    padding: 0 10px;
+    display: inline-block;
+    background: url("../images/active/bg-section.jpg") no-repeat;
+  }
+  .sub-title{
+    margin-left: 20px;
+    font-size: 10vw;
+    padding: 0 0 0 15px;
+    line-height: 1;
+    span{
+      font-size: 8vw;
+    }
+  }
+  .content{
+    line-height: 1.1;
+  }
+}
+.tab-title{
+  font-family: 'AkrobatExtraBold';
+  font-size: 6vw;
+  line-height: 1;
+  display: block;
+  padding: 5px;
+  color: #fff;
+  background: #7aacc5;
+}
+.txt-desc{
+  text-align: center;
+  line-height: 1.1;
+  .title{
+    font-family: 'SukhumvitSetBold';
+    margin-top: 3vw;
+    &.gap-bt{
+      margin-bottom: 10px;
+    }
+    &.title-lg{
+      text-decoration: underline;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+.section-2{
+  .pic{
+    margin-top: -10vw;
+  }
+  .txt-desc{
+    .title{
+      color: #7aacc5;
+    }
+  }
+}
+.section-3{
+  .tab-title{
+    background: #e3c7bc;
+  }
+  .pic1{
+    position: relative;
+    right: -15vw;
+    z-index: 10;
+    img{
+      width: 90%;
+    }
+  }
+  .pic2{
+    position: absolute;
+    bottom: 10%;
+    left: -20px;
+    img{
+      width: 120%;
+      max-width: initial;
+    }
+  }
+}
+.section-4{
+  .tab-title{
+    background: #ff7e00;
+  }
+  .title{
+    color: #ff7e00;
+  }
+  .pic1{
+    position: relative;
+    left: -10vw;
+    img{
+      max-width: initial;
+      width: 120%;
+    }
+  }
+}
+.section-5{
+  .tab-title{
+    background: #ff3d57;
+  }
+  .title{
+    color: #ff3d57;
+  }
+  .pic1{
+    position: absolute;
+    bottom: 0;
+    left: -10%;
+    width: 120%;
+  }
+}
+.section-6{
+  .txt-desc{
+    color: #38b449;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    border-right: 1px solid #38b449;
+    border-left: 1px solid #38b449;
+  }
+  .txt-desc-2{
+    color: #ed1c24;
+    border-right: 1px solid #ed1c24;
+    border-left: 1px solid #ed1c24;
+  }
+  .pic1{
+    max-width: 80%;
+    margin: auto;
+    img{
+      margin: auto;
+    }
+  }
+  .pic2{
+    max-width: 60%;
+    margin: auto;
+    img{
+      margin: auto;
+    }
+  }
+}
+.section-7{
+  background: #f7f1f1;
+  p{
+    color: #000;
+  }
+  .txt-desc{
+    position: relative;
+  }
+  .pic1{
+    max-width: 90%;
+  }
+  .pic4{
+    position: absolute;
+    bottom: 0;
+    right: -5vw;
+    top: 10%;
+    max-width: 100%;
+    img{
+      height: 100%;
+    }
+  }
+  .pic5{
+    position: absolute;
+    left: 0;
+    bottom: 70%;
+    max-width: 60%;
+    img{
+      max-width: 60%;
+    }
+  }
+  .pic6{
+    overflow: hidden;
+    display: block;
+  }
+}
+.section-8{
+  .pic1{
+    position: relative;
+    >img{
+      width: 100%;
+    }
+  }
+  .pic2{
+    position: absolute;
+    left: 50%;
+    right: 1rem;
+    bottom: -2rem;
+    img{
+      max-width: 100%;
+    }
+  }
+}
+.section-9{
+  background: url("../images/active/bg-sec-9.png") no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+  .pic{
+    text-align: center;
+    img{
+      max-width: 90%;
+      margin: auto;
+    }
+  }
+  .title{
+    font-size: 4vw;
+    margin-bottom: 7px;
+  }
+  p{
+    color: #000;
+  }
+  .pic5{
+    display: block;
+    overflow: hidden;
+    position: relative;
+    top: -3rem;
+    width: 50%;
+  }
+}
+.title-main{
+  font-family: 'AkrobatExtraBold';
+  font-size: 5vw;
+  color: #fff;
+}
+
+#page-senior{
+  color: #000;
+  p{
+    color: #000;
+  }
+  .section{
+    background-color: #fff;
+  }
+  .txt-desc{
+    text-align: left;
+    .color2{
+      color: #e36733;
+    }
+  }
+  .section-1{
+    .title1{
+      font-family: 'SukhumvitSetBold';
+      font-size: 4vw;
+      color: #e36733;
+      line-height: 1.3;
+    }
+  }
+}
+.sn-section-2{
+  .panel-title{
+    background: #32456c;
+    color: #fff;
+    padding: 1rem;
+    font-size: 4vw;
+  }
+  .txt-desc{
+    margin-left: 0.5rem;
+  }
+  .wrap-flex{
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
+    .pic{
+      flex-shrink: 0;
+      flex-basis: 30%;
+    }
+  }
+  .bg-tree{
+    position: absolute;
+    z-index: 0;
+  }
+  .flex-left{
+    .bg-tree{
+      left: -2rem;
+      top: 0;
+      bottom: 0;
+      img{
+        max-height: 100%;
+      }
+    }
+  }
+  .flex-right{
+    .bg-tree{
+      right: -2rem;
+      top: 20%;
+      bottom: 0;
+      max-height: 70%;
+      img{
+        max-height: 100%;
+      }
+    }
+  }
+}
+.sn-section-3{
+  background: url("../images/senior/bg-sec3-top.png") no-repeat center top , url("../images/senior/bg-sec3-bottom.png") no-repeat center bottom;
+  background-color: #f0f4f7 !important;
+  background-size: contain;
+  padding-top: 10rem;
+  padding-bottom: 15rem;
+  font-size: 3vw;
+  .title-main{
+    font-size: 15vw;
+    color: #e36733;
+  }
+  .sub-title{
+    font-size: 4vw;
+    color: #32456c;
+  }
+  .title{
+    font-family: 'AkrobatExtraBold';
+    font-size: 5vw;
+    color: #e36733;
+    margin-bottom: 0.5rem;
+  }
+  .txt-desc{
+    .name{
+      font-family: 'SukhumvitSetBold';
+      color: #32456c;
+      font-size: 4vw;
+      margin-top: 0.5rem;
+    }
+    .line-sec{
+      width: 100%;
+      height: 5px;
+      background: #e36733;
+      margin: 1rem 0;
+    }
+  }
+}
+.sn-section-4{
+  background: url("../images/senior/bg-sec4.png") no-repeat 100% top, url("../images/senior/bg-sec4-2.png") no-repeat center bottom;
+  background-size: 50% auto, 100% auto;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+  .title-main{
+    font-size: 13vw;
+    color: #9cb37e;
+    line-height: 1;
+  }
+  .title{
+    font-family: 'SukhumvitSetBold';
+    font-size: 4vw;
+    color: #32456c;
+    margin-bottom: 0.5rem;
+  }
+  .shop-now{
+    max-width: 50%;
+    display: block;
+    overflow: hidden;
+  }
+  .bd-txt{
+    padding: 0.7rem 0;
+    border-top: 1px solid #9cb37e;
+    border-bottom: 1px solid #9cb37e;
+    margin-top: 1rem;
+  }
+  .desc-last{
+    position: relative;
+    .title{
+      font-family: 'AkrobatExtraBold';
+      font-size: 8vw;
+      color: #32456c;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 10;
+    }
+    .sub-title{
+      font-family: 'SukhumvitSetBold';
+      font-size: 3.4vw;
+      color: #32456c;
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 10;
+    }
+    .pic{
+      position: absolute;
+      top: 0;
+      right: -3vw;
+      max-width: 20%;
+      z-index: 0;
+    }
+  }
+}
+.sn-section-5{
+  background: #f5790f !important;
+  .title{
+    font-family: 'AkrobatExtraBold';
+    font-size: 8vw;
+    color: #fff;
+    line-height: 1;
+  }
+  .title-right{
+    color: #fff;
+    line-height: 1.1;
+    span{
+      font-family: 'SukhumvitSetBold';
+      font-size: 3.5vw;
+    }
+  }
+  .pic{
+    text-align: center;
+    img{
+
+    }
+  }
+}
+.sn-section-6{
+  background: #fff;
+  .title{
+    font-family: 'AkrobatExtraBold';
+    font-size: 8vw;
+    color: #e36733;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .sub-title{
+    font-family: 'SukhumvitSetBold';
+    font-size: 3.2vw;
+    color: #32456c;
+    margin-bottom: 0.5rem;
+  }
+}
+.fm-section-1{
+  background: #fff;
+  .blog-r{
+    background: #fff7cc;
+  }
+  .txt-desc{
+    span{
+      font-family: 'SukhumvitSetBold';
+      color: #01aad3;
+    }
+  }
+  .title{
+    font-family: 'SukhumvitSetBold';
+    font-size: 5vw;
+    color: #01aad3;
+  }
+}
+.fm-section-2{
+  img{
+    width: 100%;
+  }
+}
+.fm-section-3{
+  background: #f9aa8f url("../images/family/sec3-1.png") no-repeat 100%;
+  -webkit-background-size: 30% 100%;
+  background-size: 75% 100%;
+  //background-color: #f9aa8f;
+  .title{
+    font-family: 'AkrobatExtraBold';
+    font-size: 13vw;
+    line-height: 1;
+    color: #fff;
+  }
+}
+.fm-section-4{
+  background: #fff;
+  .pic{
+    margin-top: -2rem;
+  }
+}
+.fm-section-5{
+  background: url("../images/family/bg-sec5.png") no-repeat center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  color: #fff;
+  .title{
+    font-family: 'AkrobatExtraBold';
+    font-size: 10vw;
+    line-height: 1;
+    margin-bottom: 2rem;
+  }
+  .txt-left{
+    font-size: 4vw;
+  }
+  .shop-now{
+    text-align: right;
+    display: inline-block;
+    overflow: hidden;
+    max-width: 30%;
+  }
+}
+.fm-section-6{
+  background: url("../images/family/bg-sec6-1.png") no-repeat 0%, url("../images/family/bg-sec6-2.png") no-repeat 100%;
+  background-color: #fff;
+  .title{
+    font-family: 'AkrobatExtraBold';
+    font-size: 10vw;
+    line-height: 1;
+    margin: 2rem 0;
+    color: #a26046;
+  }
+  .txt-desc{
+    color: #a26046;
+  }
+  .txt-first{
+    max-width: 70%;
+    margin: auto;
+  }
+  .item-sec{
+    .pic{
+      max-width: 90%;
+      margin: 1rem auto;
+      text-align: center;
+    }
+    .name{
+      font-family: 'SukhumvitSetBold';
+      font-size: 3.5vw;
+      line-height: 1;
+      color: #a26046;
+      margin: 1rem 0;
+    }
+    .desc{
+      text-align: left;
+    }
+  }
+  .wrap-flex{
+    align-items: center;
+    .pic{
+      flex-shrink: 0;
+      flex-basis: 20%;
+    }
+    .desc{
+      color: #000;
+      margin-left: 2rem;
+      padding: 1rem 0;
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+    }
+  }
+  .shop-now{
+    display: inline-block;
+    max-width: 30%;
+  }
+}
+.fm-section-7{
+  background: #f9f7f6;
+}
