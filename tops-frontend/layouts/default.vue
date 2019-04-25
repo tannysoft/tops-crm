@@ -123,6 +123,38 @@ button:focus {
   background-color: #fff!important;
 }
 
+.owl-theme {
+    .owl-nav {
+        position: absolute;
+        top: calc(50% - 50px);
+        left: 0;
+        right: 0;
+        margin-top: 0!important;
+
+        .owl-prev, .owl-next {
+            position: absolute;
+            height: 50px;
+            color: inherit;
+            background: none;
+            border: none;
+            z-index: 100;
+
+            i {
+                font-size: 2.5rem;
+                color: #cecece;
+            }
+        }
+
+        .owl-prev {
+            left: 0;
+        }
+
+        .owl-next {
+            right: 0;
+        }
+    }
+}
+
 #condition-modal {
   .modal-dialog {
     transform: translate(0, -50%);
@@ -200,6 +232,21 @@ button:focus {
       padding-top: 0;
       padding-bottom: 0;
       text-align: center;
+    }
+  }
+}
+
+#qrcode-modal {
+  .modal-dialog {
+    transform: translate(0, -50%);
+    top: 50%;
+    margin: 0 auto;
+    margin: .5rem;
+    color: #1f1f1f;
+    max-width: 300px;
+    margin: 0 auto;
+    img {
+      width: 100%;
     }
   }
 }
